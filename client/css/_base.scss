@@ -1,0 +1,39 @@
+/* CSS declarations go here */
+* { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+html {
+  height: 100%;
+}
+body {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAIElEQVQYV2NkIALcuXPnPyMR6hhGFeINJXDwgAhiwhIAplgjyfZrA8IAAAAASUVORK5CYII=);
+  height: 100%;
+}
+.center {
+  text-align: center;
+}
+#wrapper {
+  width: 960px;
+  margin: 0px auto;
+}
+#header {
+  margin: 25px 0px;
+}
+#header h1 {
+  font-size: 64px;
+  color: white;
+  opacity: .6;
+  text-shadow: 0px 2px 5px #333;
+}
+.experiment {
+  margin: 0 auto;
+  padding: 25px;
+  background: white;
+  border: 1px solid #aaa;
+  -webkit-box-shadow : 0px 5px 10px 0px #ccc;
+  margin-bottom: 25px;
+}
+.experiement.top, .experiment.bottom {
+  margin: 0px;
+}
+.content {
+  
+}
