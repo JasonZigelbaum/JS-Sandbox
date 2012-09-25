@@ -56,3 +56,43 @@ Template.image_slider.rendered = function () {
 
 	slider.init();
 }
+Template.twitter_feed.rendered = function() {
+  
+  var TwitterModel = Backbone.Model.extend({
+    initialize: function() {
+      this.bind("change:tweets", this.tweetsChanged)
+    },
+    tweetsChanged: function() {
+      // If we have setup a view, render it.
+      if (this.get("view")) {
+        this.get("view").render();
+      }
+      console.log("my data has changed from " + this.previous("tweets") + " to " + this.get("tweets"));
+    }
+  });
+  
+  var twitterModel = new TwitterModel({
+    tweets: []
+  });
+  
+  var TwitterView = Backbone.View.extend({
+    el: $("#feed"),
+    model: twitterModel,
+    events: {
+      "click" : function() {
+        var tweets = this.model.get("tweets");
+        tweets.push("tweet");
+        console.log(this.model.get("tweets"));
+        this.model.set({tweets: tweets});
+      }
+    },
+    render: function () {
+      console.log("called render");
+    }
+  });
+  
+  var twitterView = new TwitterView();
+  twitterModel.view = twitterView;
+  
+  twitterView.render();
+};

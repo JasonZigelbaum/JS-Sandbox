@@ -1,15 +1,23 @@
 <head>
   <title>MBox</title>
+  <script src="http://use.edgefonts.net/lobster-two;overlock-sc;poiret-one.js"></script>
+
 </head>
 
 <body>
     <div id="wrapper">
         <div id="header">
             <h1>Experiments</h1>
+            <span class="right">by: jason zigelbaum<span>
         </div>
         <div class="experiment">
             <div class="content">
-                {{>hello}}
+                {{>twitter_feed}}
+            </div>
+        </div>
+        <div class="experiment">
+            <div class="content">
+                {{>image_slider}}
             </div>
         </div>
         <div class="experiment">
@@ -19,11 +27,16 @@
         </div>
         <div class="experiment">
             <div class="content">
-                {{>image_slider}}
+                {{>hello}}
             </div>
         </div>
     </div>
 </body>
+
+<template name="twitter_feed">
+  <h1>Twitter Feed</h1>
+  <div id="feed"></div>
+</template>
 
 <template name="hello">
   <h1>Hello World!</h1>

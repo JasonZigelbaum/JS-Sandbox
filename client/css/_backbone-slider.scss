@@ -1,9 +1,25 @@
-#container {
-  display: block;
+#jz-slider button {
+  width: 250px;
+}
+button.next {
+  float: right;
+  height: 25px;
+  margin-bottom: 25px;
 }
 img {
-  border: 2px solid black;
-  display: inline;
+  display: block;
 }
 #slider-view {
+  position: relative;
+  display: inline-block;
+}
+#slider-view .image {
+  position: relative;
+  z-index: 1;
+}
+#slider-view .loader {
+  position: absolute;
+  top: 50%; left: 50%;
+  margin-left: -5px; margin-top: -5px;
+  z-index: 0;
 }

@@ -11,17 +11,39 @@ body {
   text-align: center;
 }
 #wrapper {
-  width: 960px;
-  margin: 0px auto;
+  max-width: 960px;
+  min-width: 320px;
+  width: 90%;
+  margin: 0 5%;
 }
 #header {
   margin: 25px 0px;
+  font-family: lobster-two, serif;
 }
 #header h1 {
-  font-size: 64px;
+  font-weight: 700;
+  font-size: 72px;
+  line-height: 72px;
   color: white;
   opacity: .6;
-  text-shadow: 0px 2px 5px #333;
+  text-shadow: 0px 2px 5px #000;
+}
+#header .right {
+  font-family: poiret-one;
+  letter-spacing: -1px;
+  font-size: 24px;
+  font-weight: 100;
+  margin-top: -5px;
+  color: #777;
+  float: right;
+}
+.experiment h1 {
+  font-family: poiret-one, serif;
+  font-weight: 400;
+  margin-bottom: 25px;
+}
+h2 {
+  font-weight: 500;
 }
 .experiment {
   margin: 0 auto;
@@ -33,6 +55,9 @@ body {
 }
 .experiement.top, .experiment.bottom {
   margin: 0px;
+}
+.experiment p {
+  padding-left: 25px;
 }
 .content {
   

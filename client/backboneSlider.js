@@ -6,10 +6,28 @@ var BackboneSlider = function (options) {
   var imageWidth = options.imageWidth || 250;
   var imageHeight = options.imageHeight || 250;
   var current = options.startIndex || 0;
-  
+
 	this.init = function() {
-    var img = document.createElement('img');
-    $slider.append($("<img id='slider-view'></img>"))
+    var sliderView = document.createElement('div');
+    sliderView.id = "slider-view";
+
+    var loader = document.createElement('img');
+    loader.className = "loader";
+    loader.src = "/2.gif";
+
+    var image = document.createElement('img');
+    image.className = 'image';
+    
+    $(sliderView).append(loader).append(image);
+
+    var left = document.createElement('button');
+    var right = document.createElement('button');
+    left.className = 'prev';
+    left.innerHTML = 'prev'
+    right.className = 'next';
+    right.innerHTML = 'next';
+    
+    $slider.append(left).append(right).append(sliderView);
     $container.append($slider);
 
     // Create our data model
@@ -31,20 +49,31 @@ var BackboneSlider = function (options) {
 
     // Create our view.
     var SliderView = Backbone.View.extend({
-      el: $('#slider-view'),
+      el: $('#jz-slider'),
       model: sliderModel,
       events: {
-        "click" : function () { 
+        "click .next" : function () { 
           this.model.set({data: images[++current % images.length]});
+        },
+        "click .prev" : function () {
+          if (current != 0)
+            current--;
+          else
+            current = images.length - 1;
+          this.model.set({data: images[current % images.length]});
         }
       },
+      initialize: function () { this.render() },
       render: function () {
-        this.$el.css("backgroundColor", "orange");
-        this.$el.hide();
-        this.$el.load(function () {
-          $(this).fadeIn('100');
+        console.log(Helpers.getTime());
+        var $view = $(this.$el.find('#slider-view .image'));
+        var data = this.model.get("data");
+        $view.load(function () {
+          $(this).animate({opacity: 1}, 100);
         });
-        this.el.src = this.model.get("data");
+        $view.animate({opacity: .0}, 100, function () {
+          $(this).attr("src", data);
+        });
         return this;
       }
     });
@@ -53,8 +82,7 @@ var BackboneSlider = function (options) {
     sliderModel.set({view: sliderView});
 
     // Test it out
-    sliderModel.set({data: images[1]});
-
+    sliderModel.set({data: images[current]});
     return this;
 	}
 	
