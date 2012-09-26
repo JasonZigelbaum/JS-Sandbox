@@ -72,8 +72,14 @@ Template.twitter_feed.rendered = function() {
   });
   
   var twitterModel = new TwitterModel({
-    tweets: []
+    tweets: [],
+    urlRoot: "http://www.jasonzigelbaum.com",
+    sync: function (method, model, args) {
+      console.log(method, model, args);
+    }
   });
+  
+    console.log(twitterModel.url());
   
   var TwitterView = Backbone.View.extend({
     el: $("#feed"),
@@ -90,7 +96,6 @@ Template.twitter_feed.rendered = function() {
       console.log("called render");
     }
   });
-  
   var twitterView = new TwitterView();
   twitterModel.view = twitterView;
   
